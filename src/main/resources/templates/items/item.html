@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="../css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            max-width: 560px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="py-5 text-center">
+            <h2 th:text="#{page.item}">상품상세</h2>
+        </div>
+
+        <!--추가-->
+        <h2 th:if="${param.status}" th:text="'저장 완료'"></h2>
+
+        <div>
+            <label for="itemImg" th:text="#{label.item.image}">상품 이미지</label>
+            <input type="image" id="itemImg" name="itemImg" class="form-control" th:src="${item.imgUrl}" readonly>
+        </div>
+        <div>
+            <label for="itemId" th:text="#{label.item.id}">상품 ID</label>
+            <input type="text" id="itemId" name="itemId" class="form-control" value="1" th:value="${item.id}" readonly>
+        </div>
+        <div>
+            <label th:text="#{label.item.itemName}">상품명</label>
+            <input type="text" id="itemName"  class="form-control" value="에어포스" th:value="${item.itemName}" readonly>
+        </div>
+        <div>
+            <label th:text="#{label.item.releaseDateTime}">출시일 및 시간</label>
+            <input type="text" id="itemDate"  class="form-control" value="에어포스" th:value="${item.date}+일+' '+${item.releaseTime}" readonly>
+        </div>
+
+        <hr class="my-4">
+
+        <div class="row">
+<!--            <div class="col">-->
+<!--                <button class="w-100 btn btn-primary btn-lg"-->
+<!--                        onclick="location.href='editForm.html'"-->
+<!--                        th:onclick="|location.href='@{/form/items/{itemId}/edit(itemId=${item.id})}'|"-->
+<!--                        type="button">상품 수정</button>-->
+<!--            </div>-->
+            <div class="col">
+                <button class="w-100 btn btn-secondary btn-lg"
+                        onclick="location.href='items.html'"
+                        th:onclick="|location.href='@{/form/items}'|"
+                        type="button" th:text="#{button.list}">목록으로</button>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
