@@ -6,6 +6,7 @@ import org.springframework.web.context.annotation.SessionScope;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import project.shoesUp2.beans.UserBean;
+import project.shoesUp2.interceptor.CheckLoginInterceptor;
 import project.shoesUp2.interceptor.TopMenuInterceptor;
 
 import javax.annotation.Resource;
@@ -29,6 +30,11 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addInterceptor(new TopMenuInterceptor(loginUserBean))
                 .order(1)
                 .addPathPatterns("/**");
+        registry.addInterceptor(new CheckLoginInterceptor(loginUserBean))
+                .order(2)
+                .addPathPatterns("/user/modify", "/user/logout", "/board/*")
+                .excludePathPatterns("/items/items");
+
     }
 
 
