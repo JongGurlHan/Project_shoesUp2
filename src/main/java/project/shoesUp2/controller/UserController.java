@@ -98,6 +98,12 @@ public class UserController {
 		return "user/logout";
 	}
 
+	@GetMapping("/not_login")
+	public String not_login(){
+		return "user/not_login";
+	}
+
+
 
 	//validator(비번확인) 등록
 	@InitBinder
