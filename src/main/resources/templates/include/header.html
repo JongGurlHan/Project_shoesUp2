@@ -20,15 +20,14 @@
                 <li class="nav-item">
                     <a href="/board/instock" th:href="@{/board/instock}" class="nav-link">instock</a>
                 </li>
-
-                <li class="nav-item">
-                    <a href="/board/freeBoard" th:href="@{/board/freeBoard}" class="nav-link">자유게시판
-                        <div th:text="${#request.getAttribute('message')}">message here</div></a>
-                </li>
-
-
-
             </ul>
+
+            <ul class="navbar-nav" th:each="menu :${topMenuList}">
+                <li class="nav-item">
+                    <a href="/board/main" th:href="@{/board/main(board_info_idx=${menu.board_info_idx})}" class="nav-link" th:text="${menu.board_info_name}">자유</a>
+                </li>
+            </ul>
+
 
             <ul class="navbar-nav ml-auto" >
                 <li class="nav-item" th:if="${loginUserBean.userLogin}">

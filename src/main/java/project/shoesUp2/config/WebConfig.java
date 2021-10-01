@@ -1,5 +1,6 @@
 package project.shoesUp2.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.annotation.SessionScope;
@@ -8,12 +9,16 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import project.shoesUp2.beans.UserBean;
 import project.shoesUp2.interceptor.CheckLoginInterceptor;
 import project.shoesUp2.interceptor.TopMenuInterceptor;
+import project.shoesUp2.service.TopMenuService;
 
 import javax.annotation.Resource;
 
 //프로젝트 작업시 사용할 bean을 정의하는 클래스
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
+
+    @Autowired
+    private TopMenuService topMenuService;
 
     @Resource(name="loginUserBean")
     private UserBean loginUserBean;
@@ -27,9 +32,10 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new TopMenuInterceptor(loginUserBean))
+        registry.addInterceptor(new TopMenuInterceptor(topMenuService, loginUserBean))
                 .order(1)
                 .addPathPatterns("/**");
+
         registry.addInterceptor(new CheckLoginInterceptor(loginUserBean))
                 .order(2)
                 .addPathPatterns("/user/modify", "/user/logout", "/board/*")
