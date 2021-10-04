@@ -1,9 +1,6 @@
 package project.shoesUp2.mapper;
 
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 import project.shoesUp2.beans.ContentBean;
 
 import java.util.List;
@@ -41,6 +38,11 @@ public interface BoardMapper {
             "content_file = #{content_file, jdbcType=VARCHAR} " +
             "where content_idx = #{content_idx}")
     void modifyContentInfo(ContentBean modifyContentBean);
+
+    //글삭제
+    @Delete("DELETE FROM content_table " +
+            "WHERE content_idx =#{content_idx}")
+    void deleteContentInfo(int content_idx);
 
 
 
