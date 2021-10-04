@@ -28,7 +28,7 @@ public interface BoardMapper {
 
     //작성글 정보 가져오기
     @Select("SELECT a2.user_name as content_writer_name, DATE_FORMAT(a1.content_date,'%Y-%M-%d') AS content_date,\n" +
-            "a1.content_subject, a1.content_text, a1.content_file\n" +
+            "a1.content_subject, a1.content_text, a1.content_file, a1.content_writer_idx\n" +
             "FROM content_table a1, user_table a2\n" +
             "WHERE a1.content_writer_idx = a2.user_idx\n" +
             "AND content_idx= #{content_idx}\n")
