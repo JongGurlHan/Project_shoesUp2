@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import project.shoesUp2.beans.ContentBean;
+import project.shoesUp2.beans.PageBean;
 import project.shoesUp2.beans.UserBean;
 import project.shoesUp2.service.BoardService;
 
@@ -37,12 +38,20 @@ public class BoardController {
 		List<ContentBean> contentList = boardService.getContentList(board_info_idx, page);
 		model.addAttribute("contentList", contentList);
 
+		//페이징 기능 구현
+		PageBean pageBean = boardService.getContentCnt(board_info_idx, page);
+		model.addAttribute("pageBean", pageBean);
+
+		model.addAttribute("page",page);
+
+
 		return "board/main";
 	}
 
 	@GetMapping("/read")
 	public String read(@RequestParam("board_info_idx")int board_info_idx,
 					   @RequestParam("content_idx") int content_idx,
+					   @RequestParam("page") int page,
 					   Model model){
 
 		model.addAttribute("board_info_idx", board_info_idx);
@@ -54,6 +63,8 @@ public class BoardController {
 		model.addAttribute("readContentBean", readContentBean);
 
 		model.addAttribute("loginUserBean", loginUserBean);
+
+		model.addAttribute("page", page);
 
 
 		return "board/read";
@@ -85,10 +96,12 @@ public class BoardController {
 	public String modify(@RequestParam("board_info_idx") int board_info_idx,
 						 @RequestParam("content_idx") int content_idx,
 						 @ModelAttribute("modifyContentBean") ContentBean modifyContentBean,
+						 @RequestParam("page") int page,
 						 Model model) {
 
 		model.addAttribute("board_info_idx", board_info_idx);
 		model.addAttribute("content_idx", content_idx);
+		model.addAttribute("page", page);
 
 		//게시글 정보 보여주기 위해서 임시 빈 세팅
 		ContentBean tempContentBean = boardService.getContentInfo(content_idx);
@@ -107,11 +120,15 @@ public class BoardController {
 
 	@PostMapping("/modify")
 	public String modify(@Valid @ModelAttribute("modifyContentBean") ContentBean modifyContentBean,
-						 BindingResult result) {
+						 BindingResult result,
+						 Model model,
+						 @RequestParam("page") int page) {
 		if(result.hasErrors()) {
 			return "board/modify";
 		}
 		boardService.modifyContentInfo(modifyContentBean);
+
+		model.addAttribute("page", page);
 
 		return "board/modify_success";
 	}

@@ -46,6 +46,10 @@ public interface BoardMapper {
             "WHERE content_idx =#{content_idx}")
     void deleteContentInfo(int content_idx);
 
+    //전체 글 글개수 가져오기
+    @Select("SELECT COUNT(*) FROM content_table WHERE content_board_idx = #{content_board_idx}")
+    int getContentCnt(int content_board_idx);
+
 
 
 

@@ -6,8 +6,10 @@
     <script>
         var board_info_idx = "[[${modifyContentBean.content_board_idx}]]";
         var content_idx = "[[${modifyContentBean.content_idx}]]";
+        var page = "[[${page}]]";
+
         alert('수정되었습니다.');
-        location.href = '/board/read?board_info_idx='+board_info_idx+'&content_idx='+content_idx
+        location.href = '/board/read?board_info_idx='+board_info_idx+'&content_idx='+content_idx+'&page='+page
 
     </script>
 </head>
