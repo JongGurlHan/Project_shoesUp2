@@ -61,12 +61,12 @@
   <div class="album py-5 bg-light">
     <div class="container">
       <div class="row">
-        <div class="col">
-          <button class="btn btn-primary float-end"
-                  onclick="location.href='addForm.html'"
-                  th:onclick="|location.href='@{/items/items/add}'|"
-                  type="button">상품 등록</button>
-        </div>
+<!--        <div class="col">-->
+<!--          <button class="btn btn-primary float-end"-->
+<!--                  onclick="location.href='addForm.html'"-->
+<!--                  th:onclick="|location.href='@{/items/items/add}'|"-->
+<!--                  type="button">상품 등록</button>-->
+<!--        </div>-->
       </div>
 
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -86,7 +86,7 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <button type="button" th:onclick="|location.href='@{/items/items/{itemId}(itemId=${item.id})}'|" class="btn btn-sm btn-outline-secondary">자세히</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">수정</button>
+<!--                  <button type="button" class="btn btn-sm btn-outline-secondary">수정</button>-->
                 </div>
 <!--                <small class="text-muted">9 mins</small>-->
               </div>
