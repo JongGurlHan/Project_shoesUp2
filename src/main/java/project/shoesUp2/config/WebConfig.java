@@ -53,8 +53,5 @@ public class WebConfig implements WebMvcConfigurer {
                 .addPathPatterns("/board/modify", "/board/delete");
 
 
-
     }
-
-
 }
