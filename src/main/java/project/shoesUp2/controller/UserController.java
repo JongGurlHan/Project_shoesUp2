@@ -28,12 +28,12 @@ public class UserController {
 
 	@GetMapping("/login")
 	public String login(@ModelAttribute("tempLoginUserBean")UserBean tempLoginUserBean,
-						@RequestParam(value = "failOrNot", defaultValue = "false") boolean fail,
+						@RequestParam(value = "fail", defaultValue = "false") boolean fail,
 						Model model) {
 
 		//fail이란 파라미터에 true 들어간다면 로그인 실패
 		//fail이 들어간다면 로그인 성공
-		model.addAttribute("failOrNot", fail);
+		model.addAttribute("fail", fail);
 
 		return "user/login";
 	}

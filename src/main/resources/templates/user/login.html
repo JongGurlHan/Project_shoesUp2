@@ -11,6 +11,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" th:href="@{/css/error.css}">
 
+
 </head>
 <body>
 
@@ -23,7 +24,7 @@
             <div class="card shadow">
                 <div class="card-body">
 
-                    <div th:if="${failOrNot}" class="alert alert-danger">
+                    <div th:if="${fail}" class="alert alert-danger">
                         <h3>로그인 실패</h3>
                         <p>아이디 비밀번호를 확인해주세요</p>
                     </div>

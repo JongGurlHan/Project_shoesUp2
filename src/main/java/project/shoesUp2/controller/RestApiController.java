@@ -19,5 +19,4 @@ public class RestApiController {
 
         return chk + "";
     }
-
 }
