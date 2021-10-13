@@ -23,51 +23,36 @@
         <div class="col-sm-6">
             <div class="card shadow">
                 <div class="card-body">
-                    <form action="${root }board/read" th:action th:object="${modifyContentBean}" method="post" enctype="multipart/form-data">
-
-                        <!--어떤 글을 수정할지 알아야 하기 때문에 -->
-                        <input type="hidden" th:field="*{content_idx}">
-                        <!--수정하고 돌아올때 게시판 인덱스 번호도 알아야 하기 때문에-->
-                        <input type="hidden" th:field="*{content_board_idx}">
-
+                    <form action="modify_user.html" th:action th:object="${modifyUserBean}" method="post">
 
                         <div class="form-group">
-                            <label for="content_writer_name">작성자</label>
-                            <input type="text" id="content_writer_name" th:field="*{content_writer_name}" class="form-control" value="홍길동" readonly="true"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="content_date">작성날짜</label>
-                            <input type="text" id="content_date" th:field="*{content_date}" class="form-control" value="2018-7-20" readonly="true"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="content_subject">제목</label>
-                            <input type="text" id="content_subject" th:field="*{content_subject}" class="form-control" value="제목입니다"/>
-                            <div class="field-error" th:errors="*{content_subject}"></div>
-
-                        </div>
-                        <div class="form-group">
-                            <label for="content_text">내용</label>
-                            <textarea id="content_text" th:field="*{content_text}" class="form-control" rows="10" style="resize:none">본문입니다</textarea>
-                            <div class="field-error" th:errors="*{content_text}"></div>
-
+                            <label for="user_name">이름</label>
+                            <input type="text" id="user_name" th:field="*{user_name}" class="form-control"  readonly="true"/>
                         </div>
 
                         <div class="form-group">
-                            <label for="upload_file">첨부 이미지</label>
-                            <div class="form-group" th:if="${modifyContentBean.content_file != null}">
-                                <img src="${root }image/logo.png"  th:src="@{'/upload/'+${modifyContentBean.content_file} }" width="100%"/>
-                                <input type="hidden" th:field="*{content_file}">
-                            </div>
-                            <input type="file" id="upload_file" th:field="*{upload_file}" class="form-control" accept="image/*"/>
+                            <label for="user_id">아이디</label>
+                            <input type="text" id="user_id" th:field="*{user_id}" class="form-control"  readonly="true"/>
                         </div>
 
+                        <div class="form-group">
+                            <label for="user_pw">비밀번호</label>
+                            <input type="password" id="user_pw" th:field="*{user_pw}" class="form-control" />
+                            <div class="field-error" th:errors="*{user_pw}"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="user_pw2">비밀번호 확인</label>
+                            <input type="password" id="user_pw2" th:field="*{user_pw2}" class="form-control" />
+                            <div class="field-error" th:errors="*{user_pw2}"></div>
+                        </div>
 
                         <div class="form-group">
                             <div class="text-right">
-                                <button type="submit" class="btn btn-primary">수정완료</button>
-                                <a href="${root }board/read" th:href="@{/board/read(board_info_idx=${board_info_idx}, content_idx=${content_idx})}" class="btn btn-info">취소</a>
+                                <button type="submit" class="btn btn-primary">정보수정</button>
                             </div>
                         </div>
+
                     </form>
                 </div>
             </div>
