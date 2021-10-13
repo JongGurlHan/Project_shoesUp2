@@ -59,8 +59,4 @@ public class UserService {
         modifyUserBean.setUser_idx(loginUserBean.getUser_idx());
         userDao.modifyUserInfo(modifyUserBean);
     }
-
-
-
-
 }

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.annotation.SessionScope;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -54,4 +55,11 @@ public class WebConfig implements WebMvcConfigurer {
 
 
     }
+
+    @Bean
+    public StandardServletMultipartResolver multipartResolver(){
+        return new StandardServletMultipartResolver();
+    }
+
+
 }
