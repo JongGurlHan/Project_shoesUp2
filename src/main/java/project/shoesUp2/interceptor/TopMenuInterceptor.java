@@ -18,8 +18,6 @@ public class TopMenuInterceptor implements HandlerInterceptor {
         this.topMenuService = topMenuService;
         this.loginUserBean = loginUserBean;
     }
-    
-
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -27,7 +25,6 @@ public class TopMenuInterceptor implements HandlerInterceptor {
         List<BoardInfoBean> topMenuList = topMenuService.getTopMenuList();
         request.setAttribute("topMenuList", topMenuList);
         request.setAttribute("loginUserBean", loginUserBean);
-
         return true;
         }
 }
