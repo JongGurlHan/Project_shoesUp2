@@ -10,6 +10,7 @@ import project.shoesUp2.item.ItemRepository;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;
+import java.time.LocalDate;
 
 @Component
 @RequiredArgsConstructor
@@ -32,7 +33,6 @@ public class TestDataInit {
         Elements el_releaseTime = doc.select("div.copy-container h3.headline-5"); //출시시간
         Elements el_imgUrl = doc.select("div.product-card div.ncss-col-sm-12 a.card-link img.img-component");
 
-        //adidas
 
         for(int i = 0; i<el_name.size(); i++){
             itemRepository.save(new Item(String.valueOf(el_name.get(i).text()),

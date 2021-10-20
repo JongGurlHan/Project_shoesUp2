@@ -82,6 +82,9 @@
               <p class="card-text" th:text="${item.itemName}">상품명</p>
               <span class="card-text" th:text="${item.date}+'일'">출시일</span>
               <p class="card-text" th:text="${item.releaseTime}">출시시간</p>
+              <div class="container">
+                <h1>00:00</h1>
+              </div>
 
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
@@ -107,6 +110,8 @@
 <footer th:replace="include/footer.html" :: footer></footer>
 
     <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/countdown.js"></script>
+
 
 
   </body>
