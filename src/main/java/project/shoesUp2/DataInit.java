@@ -14,9 +14,14 @@ import java.time.LocalDate;
 
 @Component
 @RequiredArgsConstructor
-public class TestDataInit {
+public class DataInit {
 
     private final ItemRepository itemRepository;
+
+//    @RequiredArgsConstructor가 있으면 생략가능
+//    public TestDataInit(ItemRepository itemRepository){
+//        this.itemRepository=itemRepository;
+//    }
 
 
     @PostConstruct
