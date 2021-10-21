@@ -24,10 +24,10 @@ public class ShoesUp2Application {
 		Elements releaseTime_newBalance = doc2.select(".launching_time"); //출시월
 		Elements imgUrl_newBalance = doc2.select(".launching_img"); //출시월
 
-		System.out.println(month_newBalance);
-		System.out.println(date_newBalance);
-		System.out.println(name_newBalance);
-		System.out.println(releaseTime_newBalance);
+//		System.out.println(month_newBalance);
+//		System.out.println(date_newBalance);
+//		System.out.println(name_newBalance);
+//		System.out.println(releaseTime_newBalance);
 		System.out.println(imgUrl_newBalance);
 	}
 }

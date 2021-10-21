@@ -40,7 +40,8 @@ public class DataInit {
 
 
         for(int i = 0; i<el_name.size(); i++){
-            itemRepository.save(new Item(String.valueOf(el_name.get(i).text()),
+            itemRepository.save(new Item(
+                        String.valueOf(el_name.get(i).text()),
                     String.valueOf(el_drawMonth.get(i).text()) +String.valueOf(el_drawDate.get(i).text()),
                         String.valueOf(el_imgUrl.get(i).attr("data-src")),
                         String.valueOf(el_releaseTime.get(i).text())
@@ -48,13 +49,28 @@ public class DataInit {
             );
         }
 
-        //adidas
+        String url_newBalance = "https://www.nbkorea.com/launchingCalendar/list.action?listStatus=C";
 
-        String url_adidas = "https://www.adidas.com/us/release-dates";
+        Document doc2 = Jsoup.connect(url_newBalance).get();
 
-        Document doc2 = Jsoup.connect(url_adidas).get();
-        Elements adidas_drawMonth = doc.getElementsByAttributeValueContaining("class", "plc-product-date___1zgO_ gl-label-4"); //출시월
-        System.out.println(adidas_drawMonth);
+        Elements month_newBalance = doc2.select(".lMonth"); //출시월
+        Elements date_newBalance = doc2.select(".lDay"); //출시월
+        Elements name_newBalance = doc2.select(".launching_name"); //제품명
+        Elements releaseTime_newBalance = doc2.select(".launching_time") ;//출시시간
+        Elements imgUrl_newBalance = doc2.select("img").first();
+        String url_newBalance2 = imgUrl_newBalance.absUrl("src");//출시월
+
+        for(int i=0; i<name_newBalance.size(); i++){
+            itemRepository.save(new Item(
+                    String.valueOf(name_newBalance.get(i).text()),
+                    String.valueOf(month_newBalance.get(i).text()) +String.valueOf(date_newBalance.get(i).text()),
+                    String.valueOf(imgUrl_newBalance.get(i).attr("img-src")),
+                    String.valueOf(releaseTime_newBalance.get(i).text())
+                  )
+            );
+        }
+
+
 
 
 
