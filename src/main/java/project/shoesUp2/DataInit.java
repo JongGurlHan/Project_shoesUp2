@@ -28,9 +28,9 @@ public class DataInit {
     public void init() throws IOException {
 
         //nike
-        String url = "https://www.nike.com/kr/launch/?type=upcoming";
+        String url_nike = "https://www.nike.com/kr/launch/?type=upcoming";
 
-        Document doc = Jsoup.connect(url).get();
+        Document doc = Jsoup.connect(url_nike).get();
 
         Elements el_drawMonth = doc.getElementsByAttributeValueContaining("class", "headline-4"); //출시월
         Elements el_drawDate = doc.getElementsByAttributeValueContaining("class", "headline-1"); //출시일
@@ -49,6 +49,16 @@ public class DataInit {
         }
 
         //adidas
+
+        String url_adidas = "https://www.adidas.com/us/release-dates";
+
+        Document doc2 = Jsoup.connect(url_adidas).get();
+        Elements adidas_drawMonth = doc.getElementsByAttributeValueContaining("class", "plc-product-date___1zgO_ gl-label-4"); //출시월
+        System.out.println(adidas_drawMonth);
+
+
+
+
 
     }
 }
