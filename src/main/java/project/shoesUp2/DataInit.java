@@ -54,17 +54,16 @@ public class DataInit {
         Document doc2 = Jsoup.connect(url_newBalance).get();
 
         Elements month_newBalance = doc2.select(".lMonth"); //출시월
-        Elements date_newBalance = doc2.select(".lDay"); //출시월
+        Elements date_newBalance = doc2.select(".lDay"); //출시일
         Elements name_newBalance = doc2.select(".launching_name"); //제품명
         Elements releaseTime_newBalance = doc2.select(".launching_time") ;//출시시간
-        Elements imgUrl_newBalance = doc2.select("img").first();
-        String url_newBalance2 = imgUrl_newBalance.absUrl("src");//출시월
+        Elements imgUrl_newBalance = doc2.select("div.launching_img img"); //이미지 url
 
         for(int i=0; i<name_newBalance.size(); i++){
             itemRepository.save(new Item(
                     String.valueOf(name_newBalance.get(i).text()),
                     String.valueOf(month_newBalance.get(i).text()) +String.valueOf(date_newBalance.get(i).text()),
-                    String.valueOf(imgUrl_newBalance.get(i).attr("img-src")),
+                    String.valueOf(imgUrl_newBalance.get(i).attr("src")),
                     String.valueOf(releaseTime_newBalance.get(i).text())
                   )
             );
