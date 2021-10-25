@@ -12,6 +12,7 @@ public interface BoardMapper {
     @Insert("INSERT INTO content_table(content_subject, content_text, content_file, content_writer_idx, content_board_idx, content_date) VALUES(#{content_subject}, #{content_text}, #{content_file}, #{content_writer_idx}, #{content_board_idx}, SYSDATE() )")
     void addContentInfo(ContentBean writeContentBean);
 
+    //게시판 이름 가져오기
     @Select("SELECT board_info_name\n" +
             "FROM board_info_table\n" +
             "WHERE board_info_idx = #{board_info_idx}")

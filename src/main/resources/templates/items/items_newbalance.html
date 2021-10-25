@@ -1,0 +1,118 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" >
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>슈즈업</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/album/">
+
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+
+
+    <!-- Bootstrap core CSS -->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+
+  </head>
+  <body>
+
+<header th:replace="include/header.html" :: header></header>
+
+<!-- --------------- 본문----------------- -->
+<main>
+
+  <section class="py-5 text-center container">
+<!--    <div class="row py-lg-5">-->
+<!--      <div class="col-lg-6 col-md-8 mx-auto">-->
+<!--        <h1 class="fw-light">Album example</h1>-->
+<!--        <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>-->
+<!--        <p>-->
+<!--          <a href="#" class="btn btn-primary my-2">Main call to action</a>-->
+<!--          <a href="#" class="btn btn-secondary my-2">Secondary action</a>-->
+<!--        </p>-->
+<!--      </div>-->
+<!--    </div>-->
+  </section>
+
+
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row">
+<!--        <div class="col">-->
+<!--          <button class="btn btn-primary float-end"-->
+<!--                  onclick="location.href='addForm.html'"-->
+<!--                  th:onclick="|location.href='@{/items/items/add}'|"-->
+<!--                  type="button">상품 등록</button>-->
+<!--        </div>-->
+      </div>
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <tr th:each="item : ${items2}">
+        <div class="col">
+          <div class="card shadow-sm">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="0px" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false" >
+
+            <img th:src="${item.imgUrl}" src="https://static-breeze.nike.co.kr/kr/ko_kr/cmsstatic/product/DH2684-001/b92e7e60-431c-4e90-b88a-9a0e8db1d2a1_primary.jpg?snkrBrowse">
+            </svg>
+
+            <div class="card-body">
+              <p class="card-text" th:text="${item.itemName}">상품명</p>
+              <span class="card-text" th:text="${item.date}+'일'">출시일</span>
+              <p class="card-text" th:text="${item.releaseTime}">출시시간</p>
+              <div class="container">
+                <h1>00:00</h1>
+              </div>
+
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" th:onclick="|location.href='@{/items/items/{itemId}(itemId=${item.id})}'|" class="btn btn-sm btn-outline-secondary">자세히</button>
+<!--                  <button type="button" class="btn btn-sm btn-outline-secondary">수정</button>-->
+                </div>
+<!--                <small class="text-muted">9 mins</small>-->
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+
+        </tr>
+
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer th:replace="include/footer.html" :: footer></footer>
+
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/countdown.js"></script>
+
+
+
+  </body>
+</html>

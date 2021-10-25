@@ -23,6 +23,7 @@ import java.util.List;
 public class ItemController {
 
     private final ItemRepository itemRepository;
+    ItemRepository itemRepository2 = new ItemRepository();
 
     // ItemController가 스프링 bean에 등록 됨으로써 생성자 주입으로 ItemRepository가 주입된다.
     // 스프링에선 생성자가 딱 하나만 있다면 @Autowired 생략가능
@@ -39,6 +40,13 @@ public class ItemController {
         model.addAttribute("items", items);
         return "items/items";
     }
+
+//    @GetMapping("/newbalance")
+//    public String items2(Model model){
+//        List<Item> items2 = itemRepository2.findAll();
+//        model.addAttribute("items2", items2);
+//        return "items/items_newbalance";
+//    }
 
     //각 상품별 조회
     @GetMapping({"/{itemId}"})

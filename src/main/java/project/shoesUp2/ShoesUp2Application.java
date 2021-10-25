@@ -18,16 +18,16 @@ public class ShoesUp2Application {
 		SpringApplication.run(ShoesUp2Application.class, args);
 
 
-
-		String url_newBalance = "https://www.nbkorea.com/launchingCalendar/list.action?listStatus=C";
-
-		Document doc2 = Jsoup.connect(url_newBalance).get();
-
-
-		Elements img = doc2.select("div.launching_img img");
-		for (Element image : img){
-			System.out.println(image.attr("src"));
-		}
+//
+//		String url_newBalance = "https://www.nbkorea.com/launchingCalendar/list.action?listStatus=C";
+//
+//		Document doc2 = Jsoup.connect(url_newBalance).get();
+//
+//
+//		Elements img = doc2.select("div.launching_img img");
+//		for (Element image : img){
+//			System.out.println(image.attr("src"));
+//		}
 
 
 
