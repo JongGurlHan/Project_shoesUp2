@@ -17,13 +17,12 @@ import java.util.List;
 //아이템의 등록,조회,수정 하는 컨트롤러
 
 @Slf4j
-@RequestMapping("/items/items")
+@RequestMapping("/items/items_nike")
 @Controller
 //@RequiredArgsConstructor
 public class ItemController {
 
     private final ItemRepository itemRepository;
-    ItemRepository itemRepository2 = new ItemRepository();
 
     // ItemController가 스프링 bean에 등록 됨으로써 생성자 주입으로 ItemRepository가 주입된다.
     // 스프링에선 생성자가 딱 하나만 있다면 @Autowired 생략가능
@@ -38,15 +37,9 @@ public class ItemController {
     public String items(Model model){
         List<Item> items = itemRepository.findAll();
         model.addAttribute("items", items);
-        return "items/items";
+        return "items/items_nike";
     }
 
-//    @GetMapping("/newbalance")
-//    public String items2(Model model){
-//        List<Item> items2 = itemRepository2.findAll();
-//        model.addAttribute("items2", items2);
-//        return "items/items_newbalance";
-//    }
 
     //각 상품별 조회
     @GetMapping({"/{itemId}"})
@@ -84,7 +77,7 @@ public class ItemController {
         Item savedItem = itemRepository.save(item);
         redirectAttributes.addAttribute("itemId", savedItem.getId());
         redirectAttributes.addAttribute("status", true);
-        return "redirect:/items/items/{itemId}";
+        return "redirect:/items/items_nike/{itemId}";
     }
 
 
@@ -99,7 +92,7 @@ public class ItemController {
     @PostMapping("/{itemId}edit")
     public String edit(@PathVariable Long itemId, @ModelAttribute Item item){
         itemRepository.update(itemId, item);
-        return "redirect:/items/items/{itemId}";
+        return "redirect:/items/items_nike/{itemId}";
     }
 
 

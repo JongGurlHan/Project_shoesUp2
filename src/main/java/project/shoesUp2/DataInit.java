@@ -7,6 +7,7 @@ import org.jsoup.select.Elements;
 import org.springframework.stereotype.Component;
 import project.shoesUp2.item.Item;
 import project.shoesUp2.item.ItemRepository;
+import project.shoesUp2.item.ItemRepository2;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;
@@ -17,7 +18,7 @@ import java.time.LocalDate;
 public class DataInit {
 
     private final ItemRepository itemRepository;
-    ItemRepository itemRepository2 = new ItemRepository();
+    private final ItemRepository2 itemRepository2;
 
 //    @RequiredArgsConstructor가 있으면 생략가능
 //    public TestDataInit(ItemRepository itemRepository){

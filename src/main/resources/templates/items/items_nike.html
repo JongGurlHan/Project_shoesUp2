@@ -82,13 +82,13 @@
               <p class="card-text" th:text="${item.itemName}">상품명</p>
               <span class="card-text" th:text="${item.date}+'일'">출시일</span>
               <p class="card-text" th:text="${item.releaseTime}">출시시간</p>
-              <div class="container">
-                <h1>00:00</h1>
-              </div>
+<!--              <div class="container">-->
+<!--                <h1>00:00</h1>-->
+<!--              </div>-->
 
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" th:onclick="|location.href='@{/items/items/{itemId}(itemId=${item.id})}'|" class="btn btn-sm btn-outline-secondary">자세히</button>
+                  <button type="button" th:onclick="|location.href='@{/items/items_nike/{itemId}(itemId=${item.id})}'|" class="btn btn-sm btn-outline-secondary">자세히</button>
 <!--                  <button type="button" class="btn btn-sm btn-outline-secondary">수정</button>-->
                 </div>
 <!--                <small class="text-muted">9 mins</small>-->

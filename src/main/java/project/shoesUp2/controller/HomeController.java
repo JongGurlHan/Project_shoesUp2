@@ -8,7 +8,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(){
-        return "redirect:/items/items";
+        return "redirect:items/items_nike";
     }
 
 
