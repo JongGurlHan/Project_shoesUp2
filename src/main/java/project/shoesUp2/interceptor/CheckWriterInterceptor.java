@@ -14,8 +14,8 @@ public class CheckWriterInterceptor implements HandlerInterceptor {
 
     //로그인한 유저 정보 가져오기
     private UserBean loginUserBean;
-
-    private BoardService boardService;
+    //boardService의 getContentInfo에서 글 작성자의 인덱스 번호를 가져오기 위해
+     private BoardService boardService;
 
     //인터셉터는 빈을 주입 받을 수 없기에 생성자로
     public CheckWriterInterceptor(UserBean loginUserBean, BoardService boardService) {

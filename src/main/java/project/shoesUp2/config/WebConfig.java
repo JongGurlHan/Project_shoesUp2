@@ -46,7 +46,7 @@ public class WebConfig implements WebMvcConfigurer {
 
         registry.addInterceptor(new CheckLoginInterceptor(loginUserBean))
                 .order(2)
-                .addPathPatterns("/user/modify", "/user/logout", "/board/*")
+                .addPathPatterns("/user/modify", "/user/logout")
                 .excludePathPatterns("/items/items", "items/items_nike");
 
         registry.addInterceptor(new CheckWriterInterceptor(loginUserBean, boardService))
