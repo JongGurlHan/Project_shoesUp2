@@ -36,7 +36,12 @@ public class ItemController2 {
     @GetMapping
     public String items2(Model model){
         List<Item> items2 = itemRepository2.findAll();
-        model.addAttribute("items2", items2);
+        if(items2.isEmpty()){
+            model.addAttribute("items2", "nothing");
+
+        }else{
+            model.addAttribute("items2", items2);
+        }
         return "items/items_newbalance";
     }
 

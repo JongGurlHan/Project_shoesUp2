@@ -70,6 +70,8 @@
       </div>
 
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div th:if="${items2 != 'nothing' } ">
+
         <tr th:each="item : ${items2}">
         <div class="col">
           <div class="card shadow-sm">
@@ -100,6 +102,10 @@
         </div>
 
         </tr>
+        </div>
+        <div th:unless="${items2 != 'nothing' } ">
+          <h4>현재 출시 예정인 제품이 없습니다.</h4>
+        </div>
 
       </div>
     </div>
